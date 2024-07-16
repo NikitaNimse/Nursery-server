@@ -1,34 +1,34 @@
-import express from 'express';
-import dotenv  from 'dotenv';
-import { getHealth } from './controllers/health.js  ';
-import { postplant ,getplants,getplantId ,putplantId,deleteplantID} from './controllers/plant.js';
-import  {handlepagenotfound } from './controllers/errors.js'
+import express from 'express'
+import dotenv  from 'dotenv'
 dotenv.config()
+import mongoose from 'mongoose'
+
+import { getHealth } from './controllers/health.js  '
+import { postplant ,
+    getplants,
+    getplantId ,
+    putplantId,
+    deleteplantID}
+ from './controllers/plant.js'
+import  {handlepagenotfound } from './controllers/errors.js';
 
 const app =express()
 app.use(express.json())
 
+const dbconnection =async()=>{
 
-// this is temperory db
-const plants = [
-
-{
-  "id": 9528,
-  "name": "pink rose",
-  "category": "indoor",
-  "image": " https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOD_CTsUHnnBBPmunWUTNnvXdzhkSepS0ESA&s",
-  "price": "200",
-  "description": "beautiful pink rose plant"
-},
-{
-  "name": "Jasmin",
-   "category": "outdoor",
-   "image": " https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkzEojJpKuqPdSbrsSAkVE0yCRDDVJdEWaUw&s",
-   "price": "60",
-   "description": "planty of beautiful flower plant"  
+  const conn =  await mongoose.connect(process.env.MONGO_URL)
+  if(conn){
+    console.log("MongoDB connected 📦")
+  }
+  else{
+    console.log("MongoDB  Not connected ❌")
+  }
 }
+dbconnection();
 
-]
+
+
 
 app.get("/health", getHealth)
 
