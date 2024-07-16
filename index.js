@@ -3,7 +3,7 @@ import dotenv  from 'dotenv'
 dotenv.config()
 import mongoose from 'mongoose'
 
-import { getHealth } from './controllers/health.js  '
+import { getHealth } from './controllers/health.js'
 import { postplant ,
     getplants,
     getplantId ,
@@ -26,9 +26,6 @@ const dbconnection =async()=>{
   }
 }
 dbconnection();
-
-
-
 
 app.get("/health", getHealth)
 
