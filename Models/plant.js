@@ -5,7 +5,9 @@ const plantSchema = new Schema({
     category: String,
     image: String,
     price: Number,
-    description: String
+    description: String},{
+
+    timestamps:true
 })
 
 const Plant =model("Plant",plantSchema)

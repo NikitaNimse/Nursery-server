@@ -30,7 +30,7 @@ import Plant from "./../Models/plant.js"
 
      const getplants = async (req,res)=>{
 
-       const allplants = await Plant.find()
+       const allplants = await Plant.find().sort({createdAt: -1})
 
         res.json({
           successs:true,
